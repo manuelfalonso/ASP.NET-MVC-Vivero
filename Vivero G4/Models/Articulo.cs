@@ -19,10 +19,5 @@ namespace Vivero_G4.Models
         public string Imagen { get; set; }
         [EnumDataType(typeof(Categoria))]
         public Categoria Categoria { get; set; }
-
-        public void ActualizarCantidad()
-        {
-
-        }
     }
 }

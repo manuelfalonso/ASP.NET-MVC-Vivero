@@ -1,0 +1,54 @@
+﻿@model Vivero_G4.Models.Venta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Venta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VentaId" />
+            <div class="form-group">
+                <label asp-for="NroTarjeta" class="control-label"></label>
+                <input asp-for="NroTarjeta" class="form-control" />
+                <span asp-validation-for="NroTarjeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FecVencimiento" class="control-label"></label>
+                <input asp-for="FecVencimiento" class="form-control" />
+                <span asp-validation-for="FecVencimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodSeguridad" class="control-label"></label>
+                <input asp-for="CodSeguridad" class="form-control" />
+                <span asp-validation-for="CodSeguridad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Domicilio" class="control-label"></label>
+                <input asp-for="Domicilio" class="form-control" />
+                <span asp-validation-for="Domicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEntrega" class="control-label"></label>
+                <select asp-items="Html.GetEnumSelectList<TipoEntrega>()" asp-for="TipoEntrega" class="form-control"></select>
+                <span asp-validation-for="TipoEntrega" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

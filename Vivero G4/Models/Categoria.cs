@@ -9,17 +9,13 @@ namespace Vivero_G4.Models
 {
     public enum Categoria
     {
-        [Display(Name = "PLANTAS")]
-        PLANTAS,
-        [Display(Name = "SEMILLAS")]
-        SEMILLAS,
-        [Display(Name = "ACCESORIOS_JARDIN")]
+        Plantas,
+        Semillas,
+        [Display(Name = "Accesorios de Jardín")]
         ACCESORIOS_JARDIN,
-        [Display(Name = "SUSTRATOS")]
-        SUSTRATOS,
-        [Display(Name = "MACETAS")]
-        MACETAS,
-        [Display(Name = "AGROQUIMICOS")]
+        Sustratos,
+        Macetas,
+        [Display(Name = "Agroquímicos")]
         AGROQUIMICOS
     }
 }

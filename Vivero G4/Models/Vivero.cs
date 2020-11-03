@@ -19,15 +19,5 @@ namespace Vivero_G4.Models
         public List<Usuario> Usuarios { get; set; }
         public List<Articulo> Stock { get; set; }
         public List<Venta> Ventas { get; set; }
-
-        public void LoginUsuario()
-        {
-
-        }
-
-        public void MostrarStock()
-        {
-
-        }
     }
 }

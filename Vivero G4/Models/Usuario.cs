@@ -21,8 +21,6 @@ namespace Vivero_G4.Models
         public bool EsAdmin { get; set; }
         public List<Articulo> ArticulosFavoritos { get; set; }
 
-        public void CrearComentario() {
-        }
         abstract public void ActualizarDatos();
     }
 }

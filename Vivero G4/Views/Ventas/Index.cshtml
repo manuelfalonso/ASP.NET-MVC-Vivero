@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Vivero_G4.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NroTarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FecVencimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodSeguridad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoEntrega)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NroTarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FecVencimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodSeguridad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domicilio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoEntrega)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VentaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VentaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VentaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

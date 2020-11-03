@@ -17,7 +17,5 @@ namespace Vivero_G4.Models
         public DateTime Fecha { get; set; }
         public string Texto { get; set; }
         public List<Comentario> Comentarios { get; set; }
-
-        public void NuevoComentario() { }
     }
 }

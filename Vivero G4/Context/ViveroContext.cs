@@ -23,8 +23,9 @@ namespace Vivero_G4.Context
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Contenido> Contenidos { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
+        public DbSet<Vivero_G4.Models.Usuario> Usuario { get; set; }
         //public DbSet<Categoria> Categorias { get; set; }
-        //public DbSet<Comentario> Comentarios { get; set; }
+        //public DbSet<TipoEntrega> TiposEntregas { get; set; }
 
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

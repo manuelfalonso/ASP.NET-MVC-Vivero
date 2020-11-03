@@ -14,10 +14,5 @@ namespace Vivero_G4.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BlogId { get; set; }
         public List<Contenido> Contenidos { get; set; }
-
-        public void NuevoContenido()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

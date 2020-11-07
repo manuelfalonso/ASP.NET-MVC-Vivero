@@ -341,4 +341,4 @@ healthchecksdb
 
 # Agregado manualmente para evitar subir el ConnectionString
 appsettings.json
-Migrations/
+"/Vivero G4/Migrations/"

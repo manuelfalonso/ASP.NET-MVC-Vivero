@@ -340,5 +340,5 @@ ASALocalRun/
 healthchecksdb
 
 # Agregado manualmente para evitar subir el ConnectionString
-appsettings.json
+*.appsettings.json
 Migrations/

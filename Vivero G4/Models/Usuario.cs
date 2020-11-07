@@ -13,10 +13,24 @@ namespace Vivero_G4.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsuarioId { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,40}$",
+         ErrorMessage = "Caracteres inválidos.")]
         public string Nombre { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,40}$",
+         ErrorMessage = "Caracteres inválidos.")]
         public string Apellido { get; set; }
+        [Required]
+        [EmailAddress]
         public string CorreoElectronico { get; set; }
+        [Required]
+        [RegularExpression(@"^[0-9-]{9,15}$",
+         ErrorMessage = "Formato 11-2222-3333")]
         public string Telefono { get; set; }
+        [Required]
+        [RegularExpression(@"(?!^[0-9]$)(?!^[a-zA-Z]$)^([a-zA-Z0-9]{8,15})$",
+         ErrorMessage = "La contraseña debe contener entre 8 y 15 caracteres que contengan letras y números")]
         public string Contraseña { get; set; }
         public bool EsAdmin { get; set; }
         public List<Articulo> ArticulosFavoritos { get; set; }

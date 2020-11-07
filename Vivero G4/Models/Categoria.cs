@@ -12,10 +12,10 @@ namespace Vivero_G4.Models
         Plantas,
         Semillas,
         [Display(Name = "Accesorios de Jardín")]
-        ACCESORIOS_JARDIN,
+        Accesorios_Jardin,
         Sustratos,
         Macetas,
         [Display(Name = "Agroquímicos")]
-        AGROQUIMICOS
+        Agroquimicos
     }
 }

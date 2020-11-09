@@ -13,8 +13,16 @@ namespace Vivero_G4.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ContenidoId { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,60}$",
+         ErrorMessage = "Caracteres inválidos.")]
         public string Titulo { get; set; }
+        [Required]
+        [Display(Name = "Fecha")]
         public DateTime Fecha { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,2000}$",
+         ErrorMessage = "Caracteres inválidos.")]}
         public string Texto { get; set; }
         public List<Comentario> Comentarios { get; set; }
     }

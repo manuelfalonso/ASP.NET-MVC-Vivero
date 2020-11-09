@@ -22,7 +22,7 @@ namespace Vivero_G4.Models
          ErrorMessage = "Caracteres inválidos.")]
         public string Apellido { get; set; }
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email inválido.")]
         public string CorreoElectronico { get; set; }
         [Required]
         [RegularExpression(@"^[0-9-]{9,15}$",

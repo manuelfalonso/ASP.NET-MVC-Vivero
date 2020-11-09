@@ -11,19 +11,6 @@ namespace Vivero_G4.Models
 {
     public class Administrador : Usuario
     {        
-        public override void ActualizarDatos()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void ActualizarStock()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CrearContenidoBlog()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

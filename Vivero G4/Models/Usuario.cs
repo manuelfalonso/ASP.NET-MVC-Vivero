@@ -34,7 +34,5 @@ namespace Vivero_G4.Models
         public string Contraseña { get; set; }
         public bool EsAdmin { get; set; }
         public List<Articulo> ArticulosFavoritos { get; set; }
-
-        abstract public void ActualizarDatos();
     }
 }

@@ -10,14 +10,6 @@ namespace Vivero_G4.Models
 {
     public class Cliente : Usuario
     {
-        public override void ActualizarDatos()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void RealizarCompra()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

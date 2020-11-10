@@ -22,7 +22,7 @@ namespace Vivero_G4.Models
         public DateTime Fecha { get; set; }
         [Required]
         [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,2000}$",
-         ErrorMessage = "Caracteres inválidos.")]}
+         ErrorMessage = "Caracteres inválidos.")]
         public string Texto { get; set; }
         public List<Comentario> Comentarios { get; set; }
     }

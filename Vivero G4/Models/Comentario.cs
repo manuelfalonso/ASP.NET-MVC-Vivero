@@ -12,10 +12,10 @@ namespace Vivero_G4.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ComentarioId { get; set; 
+        public int ComentarioId { get; set;}
         [Required]
         [RegularExpression(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,1000}$",
-         ErrorMessage = "Caracteres inválidos.")]}
-        public string Texto { get; set; }
+         ErrorMessage = "Caracteres inválidos.")]
+        public string Texto { get; set;}
     }
 }

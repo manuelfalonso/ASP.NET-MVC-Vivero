@@ -36,6 +36,7 @@ namespace Vivero_G4.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Precio")
@@ -84,6 +85,7 @@ namespace Vivero_G4.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Texto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ComentarioId");
@@ -107,9 +109,11 @@ namespace Vivero_G4.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Texto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ContenidoId");

@@ -20,9 +20,12 @@ namespace Vivero_G4.Models
         [Display(Name = "Fecha vencimiento")]
         [Required]
         [RegularExpression(@"(0[1 - 9] | 1[0 - 2])/[0-9]{2}")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:MM-YY}", ApplyFormatInEditMode = true)]
         public DateTime FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
         [Required]
         [RegularExpression(@"^[0-9]{3}$")]
+
         public int CodSeguridad { get; set; }
         public string Domicilio { get; set; }
         public Usuario Usuario { get; set; }

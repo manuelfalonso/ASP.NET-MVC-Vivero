@@ -71,17 +71,14 @@ namespace Vivero_G4.Controllers
 
                     }
                     else
-                    {
-                        
+                    {                        
                         ViewBag.errorMessage = "algo malió sal!";
-
                     }
-
                 }
             }
             catch (DbUpdateException ex)
-            {
-                
+            {                
+                Console.WriteLine(ex.Message);
                 ModelState.AddModelError("", "Unable to save changes. " +
                     "Try again, and if the problem persists " +
                     "see your system administrator.");
@@ -187,6 +184,7 @@ namespace Vivero_G4.Controllers
             }
             catch (DbUpdateException exception)
             {
+                Console.WriteLine(exception.Message);
                 return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
             }
 

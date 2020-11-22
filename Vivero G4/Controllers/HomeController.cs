@@ -23,6 +23,11 @@ namespace Vivero_G4.Controllers
             return View();
         }
 
+        public IActionResult ComoComprar()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

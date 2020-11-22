@@ -58,9 +58,19 @@ namespace Vivero_G4.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var ClienteBuscado = (from u in _context.Clientes
+                                      where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
+                                      select u).FirstOrDefault<Cliente>();
+                if (ClienteBuscado == null)
+                {
+                    _context.Add(cliente);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.errorMessage = "Usuario ya existente!";
+                }
             }
             return View(cliente);
         }

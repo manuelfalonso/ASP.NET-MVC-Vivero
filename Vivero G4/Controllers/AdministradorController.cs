@@ -157,8 +157,8 @@ namespace Vivero_G4.Controllers
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewData["ErrorMessage"] =
-                    "No se pudo borrar el Usuario. Inténtalo nuevamente, y si el problema persiste sarasa..." +
-                    "see your system administrator.";
+                    "No se pudo borrar el Usuario. Inténtalo nuevamente, y si el problema persiste " +
+                    "contacte con su administrador.";
             }
 
             return View(administrador);

@@ -56,12 +56,35 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VentaId,NroTarjeta,FecVencimiento,CodSeguridad,Domicilio,TipoEntrega")] Venta venta)
         {
-            if (ModelState.IsValid)
+
+            try 
+	        {	        
+		         if (ModelState.IsValid)
             {
-                _context.Add(venta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var ventaBuscada = (from u in _context.Ventas
+                                      where u.VentaId.Equals(Venta.VentaId)
+                                      select u).FirstOrDefault<Venta>();
+                if (ventaBuscada == null)
+                {
+                    _context.Add(venta);
+                    await _context.SaveChangesAsync();
+                    ViewBag.message = "Se realizó una nueva venta";
+                    return RedirectToAction(nameof(Index));
+                } 
+                else
+                {
+                    ViewBag.errorMessage = "La venta ya existe!";
+                }
+             }
+	        }
+	        catch (DbUpdateException ex)
+	        {   
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError("", "No se pudo acceder a la base de datos" +
+                    "Intente de nuevo y si el problema persiste" +
+                    "contacte con su administrador");
             }
+  
             return View(venta);
         }
 
@@ -117,7 +140,7 @@ namespace Vivero_G4.Controllers
         }
 
         // GET: Ventas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -125,10 +148,17 @@ namespace Vivero_G4.Controllers
             }
 
             var venta = await _context.Ventas
+                .AsNoTracking
                 .FirstOrDefaultAsync(m => m.VentaId == id);
             if (venta == null)
             {
                 return NotFound();
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "No se pudo borrar la venta. Inténtalo nuevamente, y si el problema persiste" +
+                    " contacte con su administrador";
             }
 
             return View(venta);
@@ -139,10 +169,26 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
             var venta = await _context.Ventas.FindAsync(id);
-            _context.Ventas.Remove(venta);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (venta == null)
+	        {
+                return RedirectToAction(nameof(Index));
+	        }
+            try 
+	        {	        
+		        _context.Ventas.Remove(venta);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+	        }
+	        catch (DbUpdateException exception)
+	        {
+                Console.WriteLine(exception.Message);
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+	        }
+
+
+            
         }
 
         private bool VentaExists(int id)

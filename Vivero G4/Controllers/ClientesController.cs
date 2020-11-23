@@ -166,14 +166,14 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult IniciarSesion([Bind("UsuarioId,Nombre,Apellido,CorreoElectronico,Telefono,Contraseña,EsAdmin")] Cliente cliente)
         {
-            var ClienteBuscado = (from u in _context.Clientes
+            var clienteBuscado = (from u in _context.Clientes
                                   where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
                                   select u).FirstOrDefault<Cliente>();
-            if (ClienteBuscado == null)
+            if (clienteBuscado == null)
             {
                 ViewBag.errorMessage = "Usuario no existente!";
             }
-            else if (!ClienteBuscado.Contraseña.Equals(cliente.Contraseña))
+            else if (!clienteBuscado.Contraseña.Equals(cliente.Contraseña))
             {
                 ViewBag.errorMessage = "Contraseña errónea!";
             }

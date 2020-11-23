@@ -58,24 +58,24 @@ namespace Vivero_G4.Controllers
         {
 
             try 
-	        {	        
-		         if (ModelState.IsValid)
-            {
-                var ventaBuscada = (from u in _context.Ventas
-                                      where u.VentaId.Equals(Venta.VentaId)
-                                      select u).FirstOrDefault<Venta>();
-                if (ventaBuscada == null)
+            {	        
+                if (ModelState.IsValid)
                 {
+                    var ventaBuscada = (from u in _context.Ventas
+                                    where u.VentaId.Equals(venta.VentaId)
+                                    select u).FirstOrDefault<Venta>();
+                    if (ventaBuscada == null)
+                    {
                     _context.Add(venta);
                     await _context.SaveChangesAsync();
                     ViewBag.message = "Se realizó una nueva venta";
                     return RedirectToAction(nameof(Index));
-                } 
-                else
-                {
+                    } 
+                    else
+                    {
                     ViewBag.errorMessage = "La venta ya existe!";
+                    }
                 }
-             }
 	        }
 	        catch (DbUpdateException ex)
 	        {   
@@ -148,7 +148,7 @@ namespace Vivero_G4.Controllers
             }
 
             var venta = await _context.Ventas
-                .AsNoTracking
+                //.AsNoTracking
                 .FirstOrDefaultAsync(m => m.VentaId == id);
             if (venta == null)
             {
@@ -184,7 +184,7 @@ namespace Vivero_G4.Controllers
 	        catch (DbUpdateException exception)
 	        {
                 Console.WriteLine(exception.Message);
-                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+                return RedirectToAction(nameof(Delete), new {id = id, saveChangesError = true });
 	        }
 
 

@@ -155,6 +155,36 @@ namespace Vivero_G4.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Clientes/IniciarSesion
+        public IActionResult IniciarSesion()
+        {
+            return View();
+        }
+
+        // POST: Clientes/IniciarSesion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult IniciarSesion([Bind("UsuarioId,Nombre,Apellido,CorreoElectronico,Telefono,Contraseña,EsAdmin")] Cliente cliente)
+        {
+            var ClienteBuscado = (from u in _context.Clientes
+                                  where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
+                                  select u).FirstOrDefault<Cliente>();
+            if (ClienteBuscado == null)
+            {
+                ViewBag.errorMessage = "Usuario no existente!";
+            }
+            else if (!ClienteBuscado.Contraseña.Equals(cliente.Contraseña))
+            {
+                ViewBag.errorMessage = "Contraseña errónea!";
+            }
+            else
+            {
+                ViewBag.errorMessage = "Contraseña correcta!";
+                return RedirectToAction(nameof(Index), "Home");
+            }
+            return View(cliente);
+        }
+
         private bool ClienteExists(int id)
         {
             return _context.Clientes.Any(e => e.UsuarioId == id);

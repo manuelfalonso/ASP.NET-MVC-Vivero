@@ -171,15 +171,15 @@ namespace Vivero_G4.Controllers
                                   select u).FirstOrDefault<Cliente>();
             if (clienteBuscado == null)
             {
-                ViewBag.errorMessage = "Usuario no existente!";
+                ViewBag.message = "Usuario no existente!";
             }
             else if (!clienteBuscado.Contraseña.Equals(cliente.Contraseña))
             {
-                ViewBag.errorMessage = "Contraseña errónea!";
+                ViewBag.message = "Contraseña errónea!";
             }
             else
             {
-                ViewBag.errorMessage = "Contraseña correcta!";
+                ViewBag.message = "Contraseña correcta!";
                 return RedirectToAction(nameof(Index), "Home");
             }
             return View(cliente);

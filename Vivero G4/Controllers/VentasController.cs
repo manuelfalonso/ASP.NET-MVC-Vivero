@@ -169,7 +169,6 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-
             var venta = await _context.Ventas.FindAsync(id);
             if (venta == null)
 	        {
@@ -185,10 +184,7 @@ namespace Vivero_G4.Controllers
 	        {
                 Console.WriteLine(exception.Message);
                 return RedirectToAction(nameof(Delete), new {id = id, saveChangesError = true });
-	        }
-
-
-            
+	        }            
         }
 
         private bool VentaExists(int id)

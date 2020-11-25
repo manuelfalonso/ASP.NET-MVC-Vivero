@@ -9,32 +9,6 @@
 </head>
 <body>
     <header>
-
-        <!--
-            <nav class="navbar navbar-inverse navbar-collapse navbar-fixed-top" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-nav">
-                            <span class="sr-only">Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><img class="imgBrand" src="images/logo.jpg" alt="Sushi-Ort" /></a>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="collapse-nav">
-                        <ul class="nav navbar-nav myNavbar">
-                            <li><a data-toggle="collapse" data-target=".in" href="#entradas">Home</a></li>
-                            <li><a data-toggle="collapse" data-target=".in" href="#woks">Woks</a></li>
-                            <li><a data-toggle="collapse" data-target=".in" href="#combos">Combos</a></li>
-                            <li><a data-toggle="collapse" data-target=".in" href="#footer">Contacto</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        -->
-
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -93,8 +67,8 @@
                 </a>
             </div>
         </nav>
-
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -102,6 +76,29 @@
     </div>
 
     <footer class="border-top footer text-muted">
+        <div>
+            <p>
+                <strong>Seguinos</strong> en nuestras <strong>redes sociales</strong>
+            </p>            
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/Naturaleza-M%C3%ADstica-198856063465203" target="_blank">Facebook</a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/viveronaturalezamistica/" target="_blank">Instagram</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p>
+                <strong>Envianos</strong> un <strong>whatsapp</strong>
+            </p>
+            <ul>
+                <li>
+                    <a href="https://api.whatsapp.com/send?phone=1159328585&amp;text=Quisiera%20comunicarme%20con%20ustedes&amp;source=&amp;data=&amp;app_absent=" target="_blank">Whatsapp</a>
+                </li>
+            </ul>
+        </div>
         <div class="container">
             &copy; 2020 - Vivero Naturaleza Mistica
         </div>

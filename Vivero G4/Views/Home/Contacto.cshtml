@@ -1,7 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<script>
+    function enviarEmail() {
+        var mensaje = "Su consulta fue enviada"
+        alert(mensaje);
+    }
+</script>
 <div>
     <h1>
         Contacto
@@ -22,7 +27,7 @@
             <span class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Enviar" class="btn btn-primary" />
+            <input type="button" onclick="enviarEmail()" value="Enviar" class="btn btn-primary" />
         </div>
     </form>
 </div>
@@ -66,5 +71,3 @@
         </ul>
     </div>
 </div>
-
-

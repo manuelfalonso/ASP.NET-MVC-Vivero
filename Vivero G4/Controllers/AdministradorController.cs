@@ -60,10 +60,10 @@ namespace Vivero_G4.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var Usuario = (from u in _context.Usuario
+                    var usuario = (from u in _context.Usuario
                                    where u.CorreoElectronico.Equals(administrador.CorreoElectronico)
                                    select u).FirstOrDefault<Usuario>();
-                    if (Usuario == null)
+                    if (usuario == null)
                     {
                         _context.Add(administrador);
                         await _context.SaveChangesAsync();

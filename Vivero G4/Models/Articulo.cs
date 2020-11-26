@@ -21,7 +21,6 @@ namespace Vivero_G4.Models
         public float Precio { get; set; }
         [Range(0, 999999)]
         public int Cantidad { get; set; }
-        [UrlAttribute]
         public string Imagen { get; set; }
         [EnumDataType(typeof(Categoria))]
         public Categoria Categoria { get; set; }

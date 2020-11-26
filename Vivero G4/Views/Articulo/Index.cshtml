@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Productos</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ArticuloId)
+                @Html.DisplayNameFor(model => model.Imagen)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
@@ -25,9 +25,6 @@
                 @Html.DisplayNameFor(model => model.Cantidad)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
             <th></th>
@@ -37,7 +34,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ArticuloId)
+                <img src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
+                <a asp-controller="Ventas" asp-action="Create" asp-route-id="@item.ArticuloId">
+                    <input type="button" value="Comprar" class="btn btn-primary" />
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -47,9 +47,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria)

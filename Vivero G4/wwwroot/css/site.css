@@ -64,14 +64,15 @@ body {
   overflow-x: hidden;
 }
 
-footer{
+footer {
     width: 100%;
     height: 2.5rem;
     color: white;
     text-align: center;
     padding-top: 5px;
+    position: absolute; /*MANU*/
+    /*bottom: 0;*/
 }
-
 
 .imgBrand {
     width: 40px;
@@ -80,7 +81,7 @@ footer{
 
 #banner {
     margin-bottom: 0;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     background-image: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/plantas.jpg");    
     background-repeat: no-repeat;
     background-size: cover;
@@ -100,8 +101,8 @@ footer{
     background-size: cover;
     background-color: #3b3b3b;
     color: lightgrey;
-    margin: 5px auto;
-    border-radius: 12px;
+    /*margin: 5px auto;*/
+    /*border-radius: 12px;*/
 }
 
     #footer h2 {

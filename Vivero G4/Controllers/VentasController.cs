@@ -44,8 +44,13 @@ namespace Vivero_G4.Controllers
         }
 
         // GET: Ventas/Create
-        public IActionResult Create()
+        public IActionResult Create(int idArticulo)
         {
+            var articuloVendido = _context.Articulos.FindAsync(idArticulo);
+
+            TempData.Keep();
+            ViewBag.messageTest = articuloVendido;
+
             return View();
         }
 
@@ -56,7 +61,6 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VentaId,NroTarjeta,FecVencimiento,CodSeguridad,Domicilio,TipoEntrega")] Venta venta)
         {
-
             try 
             {	        
                 if (ModelState.IsValid)

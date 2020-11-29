@@ -145,6 +145,13 @@ namespace Vivero_G4.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Comprar([Bind("ArticuloId,Nombre,Precio,Cantidad,Imagen,Categoria")] Articulo articulo)
+        {
+            TempData["articuloVendido"] = articulo.Nombre;
+            return RedirectToAction(nameof(Create), "Ventas", 100);
+            //return RedirectToAction(nameof(Create), "Ventas");
+        }
+
         private bool ArticuloExists(int id)
         {
             return _context.Articulos.Any(e => e.ArticuloId == id);

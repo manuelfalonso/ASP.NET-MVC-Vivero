@@ -4,14 +4,19 @@
     ViewData["Title"] = "Naturaleza Mística";
 }
 
-<h1>Finalizar Venta</h1>
 
+@TempData["articuloVendido"]
+@ViewBag.messageTest
+
+<h1>Finalizar Venta</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <h4>
             Producto Elegido
         </h4>
+        <p>
+        </p>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

@@ -148,7 +148,7 @@ namespace Vivero_G4.Controllers
         public async Task<IActionResult> Comprar([Bind("ArticuloId,Nombre,Precio,Cantidad,Imagen,Categoria")] Articulo articulo)
         {
             TempData["articuloVendido"] = articulo.Nombre;
-            return RedirectToAction(nameof(Create), "Ventas", 100);
+            return RedirectToAction(nameof(Create), "Ventas", TempData["articuloVendido"]);
             //return RedirectToAction(nameof(Create), "Ventas");
         }
 

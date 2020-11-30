@@ -33,9 +33,7 @@
                 <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
             </td>
             <td>
-                <a asp-controller="Ventas" asp-action="Create" asp-route-id="@item.ArticuloId">
-                    <input type="button" value="Comprar" class="btn btn-success" />
-                </a>
+                <a class="btn btn-success" asp-area="" asp-controller="Articulo" asp-action="Comprar">Comprar</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

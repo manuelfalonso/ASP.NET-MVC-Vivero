@@ -44,12 +44,11 @@ namespace Vivero_G4.Controllers
         }
 
         // GET: Ventas/Create
-        public IActionResult Create(int idArticulo)
+        public IActionResult Create()
         {
-            var articuloVendido = _context.Articulos.FindAsync(idArticulo);
-
+            //var articuloVendido = _context.Articulos.FindAsync(idArticulo);
             TempData.Keep();
-            ViewBag.messageTest = articuloVendido;
+            //ViewBag.messageTest = TempData["articuloVendido"].ToString();
 
             return View();
         }

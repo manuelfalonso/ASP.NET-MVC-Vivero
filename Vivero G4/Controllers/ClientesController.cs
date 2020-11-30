@@ -65,7 +65,7 @@ namespace Vivero_G4.Controllers
                 {
                     _context.Add(cliente);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index), "Home");
                 }
                 else
                 {

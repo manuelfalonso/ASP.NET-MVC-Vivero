@@ -301,8 +301,17 @@ a:hover {
     font-family: 'Poppins', sans-serif;
 }
 
+.mensaje-error {
+    font-size: 16px;
+    color: red;
+    font-family: 'Poppins', sans-serif;
+}
 
-
+.mensaje-venta {
+    font-size: 16px;
+    color: green;
+    font-family: 'Poppins', sans-serif;
+}
 
 
 

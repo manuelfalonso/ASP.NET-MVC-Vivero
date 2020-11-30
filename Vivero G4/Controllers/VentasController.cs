@@ -71,8 +71,8 @@ namespace Vivero_G4.Controllers
                     {
                     _context.Add(venta);
                     await _context.SaveChangesAsync();
-                    ViewBag.message = "Se realizó una nueva venta";
-                    return RedirectToAction(nameof(Index));
+                    ViewBag.message = "Su venta fue concretada con exito";
+                    return View(venta);
                     } 
                     else
                     {

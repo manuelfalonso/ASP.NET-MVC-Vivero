@@ -36,9 +36,11 @@
                 <span asp-validation-for="Contraseña" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Crear Usuario" class="btn btn-primary" />
-                <div>
-                    @ViewBag.errorMessage
+                <input type="submit" value="Crear Usuario" class="btn btn-info" />
+                <div class="container">
+                    <p class="mensaje-error">
+                        @ViewBag.errorMessage
+                    </p>                    
                 </div>
             </div>
             <div>

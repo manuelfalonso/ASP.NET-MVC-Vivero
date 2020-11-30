@@ -5,16 +5,13 @@
 }
 
 <h1 class="titulo">Productos</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Imagen)
             </th>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -27,14 +24,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
+                <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
+            </td>
+            <td>
                 <a asp-controller="Ventas" asp-action="Create" asp-route-id="@item.ArticuloId">
                     <input type="button" value="Comprar" class="btn btn-primary" />
                 </a>
@@ -50,11 +48,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ArticuloId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ArticuloId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ArticuloId">Delete</a>
             </td>
         </tr>
 }

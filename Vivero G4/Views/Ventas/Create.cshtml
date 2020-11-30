@@ -8,7 +8,7 @@
 @TempData["articuloVendido"]
 @ViewBag.messageTest
 
-<h1 class="titulo">Finalizar Venta</h1>
+<h1 class="titulo">Concretá tu compra</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -45,8 +45,9 @@
                 <select asp-items="Html.GetEnumSelectList<TipoEntrega>()" asp-for="TipoEntrega" class="form-control"></select>
                 <span asp-validation-for="TipoEntrega" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Realizar compra" class="btn btn-success" />
             </div>
         </form>
     </div>

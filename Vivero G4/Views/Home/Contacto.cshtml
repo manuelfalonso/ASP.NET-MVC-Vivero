@@ -50,7 +50,7 @@
         <h3 class="text-central">
             Envianos tus consultas
         </h3>
-        <form>
+        <form action="mailto:naturalezamistica@gmail.com" method="post" enctype="text/plain">
             <div class="form-group">
                 <input class="form-control" placeholder="Nombre" />
                 <span class="text-danger"></span>
@@ -64,7 +64,7 @@
                 <span class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="button" onclick="enviarEmail()" value="Enviar la consulta" class="btn btn-outline-success" />
+                <input type="submit" onclick="enviarEmail()" value="Enviar la consulta" class="btn btn-outline-success" />
             </div>
         </form>
     </div>

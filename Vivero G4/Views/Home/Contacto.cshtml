@@ -5,8 +5,8 @@
 
 <h1 class="titulo">Contacto</h1>
 <hr />
-<div class="row">
-    <div class="column">
+<div id="contacto" class="row">
+    <div class="col">
         <h3>
             Preguntas frecuentes
         </h3>
@@ -46,25 +46,25 @@
             </ul>
         </div>
     </div>
-    <div class="column">
+    <div class="col">
         <h3>
             Envianos tus consultas
         </h3>
         <form>
             <div class="form-group">
-                <input class="form-control" value="Nombre" />
+                <input class="form-control" placeholder="Nombre" />
                 <span class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input class="form-control" value="Email" />
+                <input class="form-control" placeholder="Email" />
                 <span class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input class="form-control" value="Dejanos tu consulta" />
+                <input class="form-control" placeholder="Dejanos tu consulta" />
                 <span class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="button" onclick="enviarEmail()" value="Enviar" class="btn btn-primary" />
+                <input type="button" onclick="enviarEmail()" value="Enviar la consulta" class="btn btn-outline-success" />
             </div>
         </form>
     </div>

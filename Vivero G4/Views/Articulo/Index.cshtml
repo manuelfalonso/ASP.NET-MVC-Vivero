@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Imagen)
+               Producto
             </th>
             <th></th>
             <th>
@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Precio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
+               Stock
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
@@ -39,10 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Precio)
+                $@Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
+                @Html.DisplayFor(modelItem => item.Cantidad) U
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria)

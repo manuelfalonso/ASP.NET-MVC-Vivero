@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, minimun-scale=1 ,initial-scale=1.0, user-scalable=yes" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;700&family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&family=Poppins:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0f914c7125.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="~/images/icon.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -40,7 +42,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a class="navbar-brand" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
+                        <a class="navbar-brand" data-toggle="tooltip" title="Iniciar sesión" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
                             <img class="imgBrand" src="~/images/usuario.png" alt="Iniciar Sesión" />
                         </a>
                     </div>
@@ -50,7 +52,7 @@
             <div id="banner">
                 <div class="container">
                     <h1>Naturaleza Mística</h1>
-                    <p>Tu Vivero Online</p>
+                    <h2>Tu Vivero Online</h2>
                 </div>
             </div>
 

@@ -61,30 +61,31 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  background: #f8faf7;
-  margin-bottom: 10px;
-  font-family: Roboto Mono;
-  overflow-x: hidden;
+    /* Margin bottom by footer height */
+    background: #f8faf7;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+    overflow-x: hidden;
 }
 
-p{
-    font-family: 'Inconsolata', monospace;
+p {
+    font-family: 'Poppins', sans-serif;
 }
 
-h1{
-    font-family: 'Courier New';
+h1 {
+    font-family: 'Roboto Slab', serif;
     font-weight: lighter;
     font-size: 10px;
 }
 
 h2 {
-    font-family: 'Courier New';
- 
+    font-family: 'Roboto Slab', serif;
+   
 }
 
 .text-central {
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     line-height: 1.5;
     text-rendering: optimizeLegibility;
@@ -112,7 +113,7 @@ a{
 
 a:hover {
     text-decoration: none !important;
-    color: black;
+    color: darkgreen;
     transition: color 0.5s ease;
 }
 
@@ -121,22 +122,25 @@ a:hover {
     position: relative;
 }
 
+
 .navbar-nav li{
     border-right: 1px solid black;
 }
 
 .navbar-nav li:last-child {
-        border-right: none;
+     border-right: none;
     }
 
 .navbar-nav a {
     color: black !important;
     font-size: 18px;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
 }
 .navbar-nav a:hover {
-        color: mediumseagreen !important;
-        font-size: 20px;
+    color: mediumseagreen !important;
+    font-size: 20px;
+    font-weight: 500;
+    transition: color 0.5s ease;
     }
 
 
@@ -193,7 +197,7 @@ a:hover {
 
     #footer p{
         color: white;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
     }
 
@@ -231,8 +235,9 @@ a:hover {
     margin-bottom: 5px;
 }
 
-.titulo{
+.titulo {
     font-size: 40px;
+    font-family: 'Nunito', sans-serif;
     font-weight: 600;
     color: #436e43;
     margin-bottom: 10px;
@@ -251,13 +256,64 @@ a:hover {
 }
 
 .producto {
-    height: 8rem;
+    height: 10rem;
 }
 
 .boton-margen{
     margin: 25px 0px 5px;
 
 }
+.button-extra {
+    border-radius: 8px;
+    background-color: #436e43;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 1px;
+    width: 250px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button-extra span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    }
+
+.button-extra span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 11px;
+    right: -20px;
+    transition: 0.5s;
+        }
+
+.button-extra:hover span {
+    padding-right: 10px;
+    }
+
+.button-extra:hover span:after {
+    opacity: 1;
+    right: 0;
+        }
+
+ .button-extra a {
+        color: white;
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+#como-comprar h4, li, h6, a {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
 
 
 

@@ -15,13 +15,15 @@ namespace Vivero_G4.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VentaId { get; set; }
         [Required(ErrorMessage = "Debe ingresar el número de tarjeta")]
+        [RegularExpression(@"[\d][0-9]{15}",
+         ErrorMessage = "Debe ingresar un número de tarjeta valido")]
         public long NroTarjeta { get; set; }
         [Display(Name = "Fecha vencimiento")]
         [Required(ErrorMessage = "Debe ingresar la fecha de vencimiento")]
         //[RegularExpression(@"(0[1 - 9] | 1[0 - 2])/[0-9]{2}")]
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:MM-YY}", ApplyFormatInEditMode = true)]
-        public DateTime FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
+        public string FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
         [Required(ErrorMessage = "Debe ingresar el código de seguridad")]
         [RegularExpression(@"^[0-9]{3}$")]
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,7 +49,7 @@ namespace Vivero_G4.Controllers
             //var articuloVendido = _context.Articulos.FindAsync(idArticulo);
             TempData.Keep();
             //ViewBag.messageTest = TempData["articuloVendido"].ToString();
-
+           
             return View();
         }
 

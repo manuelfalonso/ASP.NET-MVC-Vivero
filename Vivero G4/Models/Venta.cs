@@ -24,7 +24,6 @@ namespace Vivero_G4.Models
         public DateTime FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
         [Required(ErrorMessage = "Debe ingresar el código de seguridad")]
         [RegularExpression(@"^[0-9]{3}$")]
-
         public int CodSeguridad { get; set; }
         [Required(ErrorMessage = "Debe ingresar su domicilio")]
         public string Domicilio { get; set; }

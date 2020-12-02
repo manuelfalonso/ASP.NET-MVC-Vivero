@@ -20,12 +20,12 @@ namespace Vivero_G4.Models
         public long NroTarjeta { get; set; }
         [Display(Name = "Fecha vencimiento")]
         [Required(ErrorMessage = "Debe ingresar la fecha de vencimiento")]
-        //[RegularExpression(@"(0[1 - 9] | 1[0 - 2])/[0-9]{2}")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:MM-YY}", ApplyFormatInEditMode = true)]
+        [RegularExpression(@"^(0[1-9]|1[0-2])/([2-9][0^abc$-9])$",
+         ErrorMessage = "Formato MM/AA")]
         public string FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
         [Required(ErrorMessage = "Debe ingresar el código de seguridad")]
-        [RegularExpression(@"^[0-9]{3}$")]
+        [RegularExpression(@"^[0-9]{3}$",
+         ErrorMessage = "Debe ingresar un codigo de seguridad valido")]
 
         public int CodSeguridad { get; set; }
         [Required(ErrorMessage = "Debe ingresar su domicilio")]

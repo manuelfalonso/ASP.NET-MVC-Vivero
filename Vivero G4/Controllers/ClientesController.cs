@@ -56,22 +56,31 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,Nombre,Apellido,CorreoElectronico,Telefono,Contraseña,EsAdmin")] Cliente cliente)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var ClienteBuscado = (from u in _context.Clientes
-                                      where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
-                                      select u).FirstOrDefault<Cliente>();
-                if (ClienteBuscado == null)
+                if (ModelState.IsValid)
                 {
-                    _context.Add(cliente);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index), "Home");
-                }
-                else
-                {
-                    ViewBag.errorMessage = "Usuario ya existente!";
+                    var ClienteBuscado = (from u in _context.Clientes
+                                          where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
+                                          select u).FirstOrDefault<Cliente>();
+                    if (ClienteBuscado == null)
+                    {
+                        _context.Add(cliente);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index), "Home");
+                    }
+                    else
+                    {
+                        ViewBag.errorMessage = "Usuario ya existente!";
+                    }
                 }
             }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError("", "Error al acceder a la base de datos.");
+            }
+
             return View(cliente);
         }
 
@@ -166,21 +175,29 @@ namespace Vivero_G4.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult IniciarSesion([Bind("UsuarioId,Nombre,Apellido,CorreoElectronico,Telefono,Contraseña,EsAdmin")] Cliente cliente)
         {
-            var clienteBuscado = (from u in _context.Clientes
-                                  where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
-                                  select u).FirstOrDefault<Cliente>();
-            if (clienteBuscado == null)
+            try
             {
-                ViewBag.message = "Usuario no existente!";
+                var clienteBuscado = (from u in _context.Clientes
+                                      where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
+                                      select u).FirstOrDefault<Cliente>();
+                if (clienteBuscado == null)
+                {
+                    ViewBag.message = "Usuario no existente!";
+                }
+                else if (!clienteBuscado.Contraseña.Equals(cliente.Contraseña))
+                {
+                    ViewBag.message = "Contraseña errónea!";
+                }
+                else
+                {
+                    ViewBag.message = "Contraseña correcta!";
+                    return RedirectToAction(nameof(Index), "Home");
+                }
             }
-            else if (!clienteBuscado.Contraseña.Equals(cliente.Contraseña))
+            catch (DbUpdateException ex)
             {
-                ViewBag.message = "Contraseña errónea!";
-            }
-            else
-            {
-                ViewBag.message = "Contraseña correcta!";
-                return RedirectToAction(nameof(Index), "Home");
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError("", "Error al acceder a la base de datos.");
             }
             return View(cliente);
         }

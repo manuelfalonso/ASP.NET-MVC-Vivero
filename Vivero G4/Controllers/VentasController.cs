@@ -69,25 +69,24 @@ namespace Vivero_G4.Controllers
                                     select u).FirstOrDefault<Venta>();
                     if (ventaBuscada == null)
                     {
-                    _context.Add(venta);
-                    await _context.SaveChangesAsync();
-                    ViewBag.message = "Su venta fue concretada con exito";
-                    return View(venta);
+                        _context.Add(venta);
+                        await _context.SaveChangesAsync();
+                        ViewBag.message = "Su venta fue concretada con exito";
+                        return View(venta);
                     } 
                     else
                     {
-                    ViewBag.errorMessage = "La venta ya existe!";
+                        ViewBag.errorMessage = "La venta ya existe!";
                     }
                 }
 	        }
 	        catch (DbUpdateException ex)
 	        {   
                 Console.WriteLine(ex.Message);
-                ModelState.AddModelError("", "No se pudo acceder a la base de datos" +
-                    "Intente de nuevo y si el problema persiste" +
-                    "contacte con su administrador");
-            }
-  
+                ModelState.AddModelError("", "No se pudo acceder a la base de datos." +
+                    " Intente de nuevo y si el problema persiste" +
+                    " contacte con su administrador");
+            }  
             return View(venta);
         }
 

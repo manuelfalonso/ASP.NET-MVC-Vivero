@@ -177,20 +177,22 @@ namespace Vivero_G4.Controllers
         {
             try
             {
-                var clienteBuscado = (from u in _context.Clientes
+                var usuarioBuscado = (from u in _context.Clientes
                                       where u.CorreoElectronico.Equals(cliente.CorreoElectronico)
                                       select u).FirstOrDefault<Cliente>();
-                if (clienteBuscado == null)
+                if (usuarioBuscado == null)
                 {
                     ViewBag.message = "Usuario no existente!";
                 }
-                else if (!clienteBuscado.Contraseña.Equals(cliente.Contraseña))
+                else if (!usuarioBuscado.Contraseña.Equals(cliente.Contraseña))
                 {
                     ViewBag.message = "Contraseña errónea!";
                 }
                 else
                 {
-                    ViewBag.message = "Contraseña correcta!";
+                    TempData["usuarioId"] = usuarioBuscado.UsuarioId;
+                    TempData["usuarioEsAdmin"] = usuarioBuscado.EsAdmin;
+                    TempData["usuarioEmail"] = usuarioBuscado.CorreoElectronico;
                     return RedirectToAction(nameof(Index), "Home");
                 }
             }
@@ -200,6 +202,12 @@ namespace Vivero_G4.Controllers
                 ModelState.AddModelError("", "Error al acceder a la base de datos.");
             }
             return View(cliente);
+        }
+
+        public IActionResult CerrarSesion()
+        {
+            TempData.Clear();
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         private bool ClienteExists(int id)

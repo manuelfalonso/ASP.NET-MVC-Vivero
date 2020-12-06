@@ -145,11 +145,32 @@ namespace Vivero_G4.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Comprar([Bind("ArticuloId,Nombre,Precio,Cantidad,Imagen,Categoria")] Articulo articulo)
+        public async Task<IActionResult> Comprar(int? id)
         {
-            TempData["articuloVendido"] = articulo.Nombre;
-            return RedirectToAction(nameof(Create), "Ventas", TempData["articuloVendido"]);
-            //return RedirectToAction(nameof(Create), "Ventas");
+            try
+            {
+                var articuloComprado = await _context.Articulos.FindAsync(id);
+                if (articuloComprado == null)
+                {
+                    ViewBag.message = "Producto no existente!";
+                }
+                else
+                {
+                    articuloComprado.Cantidad = articuloComprado.Cantidad - 1;
+                    await _context.SaveChangesAsync();
+                    TempData["articuloVendidoId"] = articuloComprado.ArticuloId;
+                    TempData["articuloVendidoImagen"] = articuloComprado.Imagen;
+                    TempData["articuloVendidoNombre"] = articuloComprado.Nombre;
+                    TempData["articuloVendidoPrecio"] = Math.Round(articuloComprado.Precio, 2);
+                    TempData["articuloVendidoCategoria"] = articuloComprado.Categoria.ToString();
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError("", "Error al acceder a la base de datos.");
+            }
+            return RedirectToAction(nameof(Create), "Ventas");
         }
 
         private bool ArticuloExists(int id)

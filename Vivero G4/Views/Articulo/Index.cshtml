@@ -31,26 +31,37 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
-                    </td>
-                    <td>
-                        <a class="btn btn-success" asp-area="" asp-controller="Articulo" asp-action="Comprar">Comprar</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        $@Html.DisplayFor(modelItem => item.Precio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cantidad) U
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Categoria)
-                    </td>
-                </tr>
+                if (item.Cantidad >= 1)
+                {
+                    <tr>
+                        <td>
+                            <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
+                        </td>
+                        <td>
+                            @{
+                                if (TempData.Peek("usuarioId") != null)
+                                {
+                                    <a class="btn btn-success" asp-area="" asp-controller="Articulo" asp-action="Comprar" asp-route-id="@item.ArticuloId">Comprar</a>
+                                    <div>
+                                        @ViewBag.message
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad) U
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categoria)
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

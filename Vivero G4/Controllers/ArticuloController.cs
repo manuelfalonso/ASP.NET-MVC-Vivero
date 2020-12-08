@@ -156,7 +156,7 @@ namespace Vivero_G4.Controllers
                 }
                 else
                 {
-                    articuloComprado.Cantidad = articuloComprado.Cantidad - 1;
+                    articuloComprado.Cantidad -= 1;
                     await _context.SaveChangesAsync();
                     TempData["articuloVendidoId"] = articuloComprado.ArticuloId;
                     TempData["articuloVendidoImagen"] = articuloComprado.Imagen;

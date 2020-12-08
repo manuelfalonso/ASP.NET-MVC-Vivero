@@ -52,7 +52,7 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Ventas" asp-action="Index">Listado Ventas</a>
                                 </li>
                             }
-                            else if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").ToString().Equals("false"))
+                            else if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(false))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Ventas" asp-action="Index">Mis Compras</a>

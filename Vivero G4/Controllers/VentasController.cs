@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +22,16 @@ namespace Vivero_G4.Controllers
         // GET: Ventas
         public async Task<IActionResult> Index()
         {
+            try
+            {
+                ViewData["Articulos"] = await _context.Articulos.ToListAsync();
+                ViewData["Usuarios"] = await _context.Usuarios.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError("", "No se pudo acceder a la base de datos.");
+            }         
             return View(await _context.Ventas.ToListAsync());
         }
 
@@ -46,10 +56,6 @@ namespace Vivero_G4.Controllers
         // GET: Ventas/Create
         public IActionResult Create()
         {
-            //var articuloVendido = _context.Articulos.FindAsync(idArticulo);
-            TempData.Keep();
-            //ViewBag.messageTest = TempData["articuloVendido"].ToString();
-           
             return View();
         }
 
@@ -69,6 +75,8 @@ namespace Vivero_G4.Controllers
                                     select u).FirstOrDefault<Venta>();
                     if (ventaBuscada == null)
                     {
+                        venta.UsuarioId = Int16.Parse(TempData.Peek("usuarioId").ToString());
+                        venta.ArticuloId = Int16.Parse(TempData.Peek("articuloVendidoId").ToString());
                         _context.Add(venta);
                         await _context.SaveChangesAsync();
                         ViewBag.message = "Su venta fue concretada con exito";
@@ -185,7 +193,7 @@ namespace Vivero_G4.Controllers
 	        catch (DbUpdateException exception)
 	        {
                 Console.WriteLine(exception.Message);
-                return RedirectToAction(nameof(Delete), new {id = id, saveChangesError = true });
+                return RedirectToAction(nameof(Delete), new { id, saveChangesError = true });
 	        }            
         }
 

@@ -29,8 +29,11 @@ namespace Vivero_G4.Models
         public int CodSeguridad { get; set; }
         [Required(ErrorMessage = "Debe ingresar su domicilio")]
         public string Domicilio { get; set; }
-        public Usuario Usuario { get; set; }
-        public List<Articulo> ArticulosVenta { get; set; }
+        //public Usuario Usuario { get; set; } //REEMPLAZO PARA DEJARLO COMO LA BASE DE DATOS. UN INT IDUSUARIO
+        public int UsuarioId { get; set; }
+        //public List<Articulo> ArticulosVenta { get; set; } REEMPLAZO PARA PERMITIR CRUZAR CON TABLA ARTICULO. LIST NO SIRVE EN LA BASE DE DATOS
+        //public Articulo Articulo { get; set; }
+        public int ArticuloId { get; set; }
         [EnumDataType(typeof(TipoEntrega))]
         public TipoEntrega TipoEntrega { get; set; }
     }

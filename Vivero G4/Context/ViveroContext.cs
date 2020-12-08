@@ -15,7 +15,7 @@ namespace Vivero_G4.Context
         }
 
         public DbSet<Vivero> Viveros { get; set; }
-        //public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Articulo> Articulos { get; set; }
@@ -23,7 +23,7 @@ namespace Vivero_G4.Context
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Contenido> Contenidos { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
-        public DbSet<Vivero_G4.Models.Usuario> Usuario { get; set; }
+        //public DbSet<Vivero_G4.Models.Usuario> Usuario { get; set; }
         //public DbSet<Categoria> Categorias { get; set; }
         //public DbSet<TipoEntrega> TiposEntregas { get; set; }
 

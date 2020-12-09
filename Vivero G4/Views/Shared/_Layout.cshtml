@@ -30,9 +30,20 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="Index">Articulos</a>
-                        </li>
+                        @{
+                            if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="Index">ABM Productos</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="Index">Productos</a>
+                                </li>
+                            }
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a>
                         </li>
@@ -45,9 +56,6 @@
                         @{
                             if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="Index">ABM Articulos</a>
-                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Ventas" asp-action="Index">Listado Ventas</a>
                                 </li>

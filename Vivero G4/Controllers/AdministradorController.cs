@@ -60,7 +60,7 @@ namespace Vivero_G4.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var usuario = (from u in _context.Usuario
+                    var usuario = (from u in _context.Usuarios
                                    where u.CorreoElectronico.Equals(administrador.CorreoElectronico)
                                    select u).FirstOrDefault<Usuario>();
                     if (usuario == null)
@@ -184,7 +184,7 @@ namespace Vivero_G4.Controllers
             catch (DbUpdateException exception)
             {
                 Console.WriteLine(exception.Message);
-                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+                return RedirectToAction(nameof(Delete), new { id, saveChangesError = true });
             }
 
 

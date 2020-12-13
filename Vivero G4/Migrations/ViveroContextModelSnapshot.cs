@@ -45,17 +45,12 @@ namespace Vivero_G4.Migrations
                     b.Property<int?>("UsuarioId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VentaId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ViveroId")
                         .HasColumnType("int");
 
                     b.HasKey("ArticuloId");
 
                     b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VentaId");
 
                     b.HasIndex("ViveroId");
 
@@ -164,7 +159,7 @@ namespace Vivero_G4.Migrations
 
                     b.HasIndex("ViveroId");
 
-                    b.ToTable("Usuario");
+                    b.ToTable("Usuarios");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Usuario");
                 });
@@ -176,14 +171,19 @@ namespace Vivero_G4.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CodSeguridad")
                         .HasColumnType("int");
 
                     b.Property<string>("Domicilio")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FecVencimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("FecVencimiento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("NroTarjeta")
                         .HasColumnType("bigint");
@@ -191,15 +191,13 @@ namespace Vivero_G4.Migrations
                     b.Property<int>("TipoEntrega")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
+                    b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ViveroId")
                         .HasColumnType("int");
 
                     b.HasKey("VentaId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.HasIndex("ViveroId");
 
@@ -246,10 +244,6 @@ namespace Vivero_G4.Migrations
                         .WithMany("ArticulosFavoritos")
                         .HasForeignKey("UsuarioId");
 
-                    b.HasOne("Vivero_G4.Models.Venta", null)
-                        .WithMany("ArticulosVenta")
-                        .HasForeignKey("VentaId");
-
                     b.HasOne("Vivero_G4.Models.Vivero", null)
                         .WithMany("Stock")
                         .HasForeignKey("ViveroId");
@@ -278,10 +272,6 @@ namespace Vivero_G4.Migrations
 
             modelBuilder.Entity("Vivero_G4.Models.Venta", b =>
                 {
-                    b.HasOne("Vivero_G4.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
                     b.HasOne("Vivero_G4.Models.Vivero", null)
                         .WithMany("Ventas")
                         .HasForeignKey("ViveroId");

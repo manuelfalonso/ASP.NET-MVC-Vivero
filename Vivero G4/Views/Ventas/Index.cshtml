@@ -2,58 +2,163 @@
 
 @{
     ViewData["Title"] = "Index";
+    IEnumerable<Usuario> usuarios = ViewData["Usuarios"] as IEnumerable<Usuario>;
+    IEnumerable<Articulo> articulos = ViewData["Articulos"] as IEnumerable<Articulo>;
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@{
+    if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
+    {
+        <h1 class="titulo">Listado ventas</h1>
+    }
+    else if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(false))
+    {
+        <h1 class="titulo">Mis compras</h1>
+    }
+}
+<hr />
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NroTarjeta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FecVencimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodSeguridad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Domicilio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoEntrega)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NroTarjeta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FecVencimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodSeguridad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Domicilio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoEntrega)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VentaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VentaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VentaId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+    @if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
+    {
+        <thead>
+            <tr>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NroTarjeta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FecVencimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodSeguridad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Domicilio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoEntrega)
+                </th>
+                <th>
+                    Usuario
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @foreach (var articulo in articulos)
+                        {
+                            if (articulo.ArticuloId == item.ArticuloId)
+                            {
+                                @articulo.Nombre
+                            }
+                        }
+                    </td>
+                    <td>
+                        $
+                        @foreach (var articulo in articulos)
+                        {
+                            if (articulo.ArticuloId == item.ArticuloId)
+                            {
+                                @articulo.Precio
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NroTarjeta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FecVencimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodSeguridad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Domicilio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoEntrega)
+                    </td>
+                    <td>
+                        @foreach (var usuario in usuarios)
+                        {
+                            if (usuario.UsuarioId == item.UsuarioId)
+                            {
+                                @usuario.CorreoElectronico;
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NroTarjeta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Domicilio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoEntrega)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var nroTarjetaCliente = item.NroTarjeta % 10000;
+
+                if (item.UsuarioId == Int16.Parse(TempData.Peek("usuarioId").ToString()))
+                {
+                    <tr>
+                        <td>
+                            @foreach (var articulo in articulos)
+                            {
+                                if (articulo.ArticuloId == item.ArticuloId)
+                                {
+                                    @articulo.Nombre
+                                }
+                            }
+                        </td>
+                        <td>
+                            $
+                            @foreach (var articulo in articulos)
+                            {
+                                if (articulo.ArticuloId == item.ArticuloId)
+                                {
+                                    @articulo.Precio
+                                }
+                            }
+                        </td>
+                        <td>
+                            ************@nroTarjetaCliente
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Domicilio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoEntrega)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    }
 </table>

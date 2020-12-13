@@ -4,10 +4,6 @@
     ViewData["Title"] = "Naturaleza Mística";
 }
 
-
-@TempData["articuloVendido"]
-@ViewBag.messageTest
-
 <h1 class="titulo">Concretá tu compra</h1>
 <hr />
 <div class="row">
@@ -15,9 +11,40 @@
         <h4>
             Producto Elegido:
         </h4>
-        <p>
-
-        </p>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Producto
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Categoria
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img class="producto" src="~/images/@TempData.Peek("articuloVendidoImagen")" />
+                    </td>
+                    <td>
+                        @TempData.Peek("articuloVendidoNombre")
+                    </td>
+                    <td>
+                        $@TempData.Peek("articuloVendidoPrecio")
+                    </td>
+                    <td>
+                        @TempData.Peek("articuloVendidoCategoria")
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -47,11 +74,12 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Realizar compra" class="btn btn-success" />
+                <input type="submit" value="Realizar compra" class="btn btn-success" autofocus/>
             </div>
             <div class="container">
                 <p class="mensaje-venta">
                     @ViewBag.message
+                    @ViewBag.errorMessage
                 </p>
             </div>
         </form>

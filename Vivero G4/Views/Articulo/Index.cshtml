@@ -7,7 +7,12 @@
 <h1 class="titulo">Productos</h1>
 <hr />
 <p>
-    <a asp-action="Create">Agregar nuevo producto</a>
+    @{
+        if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
+        {
+            <a asp-action="Create">Agregar nuevo producto</a>
+        }
+    }    
 </p>
 <div class="table-responsive">
     <table class="table table-hover table-dark">

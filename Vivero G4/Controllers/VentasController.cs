@@ -79,7 +79,7 @@ namespace Vivero_G4.Controllers
                         venta.ArticuloId = Int16.Parse(TempData.Peek("articuloVendidoId").ToString());
                         _context.Add(venta);
                         await _context.SaveChangesAsync();
-                        ViewBag.message = "Su venta fue concretada con exito";
+                        ViewBag.message = "Su compra fue concretada con exito";
                         return View(venta);
                     } 
                     else

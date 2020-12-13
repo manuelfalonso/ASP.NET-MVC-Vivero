@@ -23,9 +23,9 @@ namespace Vivero_G4.Models
         //[RegularExpression(@"(0[1 - 9] | 1[0 - 2])/[0-9]{2}")]
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:MM-YY}", ApplyFormatInEditMode = true)]
-        public string FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
+        public DateTime FecVencimiento { get; set; } //CAMBIAR TIPO DE DATO DE DATETIME A STRING
         [Required(ErrorMessage = "Debe ingresar el código de seguridad")]
-        [RegularExpression(@"^[0-9]{3}$")]
+        [RegularExpression(@"^[0-9]{3}$", ErrorMessage = "Debe ingresar un número de tarjeta válido")]
         public int CodSeguridad { get; set; }
         [Required(ErrorMessage = "Debe ingresar su domicilio")]
         public string Domicilio { get; set; }

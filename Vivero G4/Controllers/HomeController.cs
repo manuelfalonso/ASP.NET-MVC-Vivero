@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -36,6 +38,37 @@ namespace Vivero_G4.Controllers
         public IActionResult Contacto()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult EnviarMail(String cuerpo)
+        {
+            string mailFrom = "viveronaturalezamistica@gmail.com";
+            string mailFromPassword = "peperomero10";
+            string mailFromDisplayName = "NM WEB CONSULTO";
+            string smtpServerIp = "smtp.gmail.com";
+            int smtpServerPort = 587;
+            bool smtpServerEnableSsl = true;
+
+            using (var client = new SmtpClient(smtpServerIp, smtpServerPort)
+            {
+                Credentials = new NetworkCredential(mailFrom, mailFromPassword),
+                EnableSsl = smtpServerEnableSsl
+            })
+            {
+                String mailTo = "viveronaturalezamistica@gmail.com";
+
+                var mailMessage = new MailMessage(new MailAddress(mailFrom, mailFromDisplayName, System.Text.Encoding.UTF8), new MailAddress(mailTo))
+                {
+                    IsBodyHtml = true,
+                    Subject = "consulta",
+                    Body = cuerpo
+                };
+
+                client.Send(mailMessage);
+            }
+
+            return Json(true);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -45,7 +45,7 @@ namespace Vivero_G4.Controllers
         {
             string mailFrom = "viveronaturalezamistica@gmail.com";
             string mailFromPassword = "peperomero10";
-            string mailFromDisplayName = "NM WEB CONSULTO";
+            string mailFromDisplayName = "NM WEB CONSULTA";
             string smtpServerIp = "smtp.gmail.com";
             int smtpServerPort = 587;
             bool smtpServerEnableSsl = true;

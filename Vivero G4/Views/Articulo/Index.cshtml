@@ -86,9 +86,21 @@
     </table>
 </div>
 
-<div class="container boton-margen">
-        <a class="btn-lg btn-success" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">¡Iniciá sesión para comprar tu artículo!</a>
-</div>
 
+ 
+<div class="container boton-margen">
+    @{
+        if (TempData.Peek("usuarioEsAdmin") != null && (TempData.Peek("usuarioEsAdmin").Equals(true) || TempData.Peek("usuarioEsAdmin").Equals(false)))
+        {
+
+        }
+        else
+        {
+        <a class="btn-lg btn-success" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">¡Iniciá sesión para comprar tu artículo!</a>
+        }
+    }
+
+</div>
+ 
 
 

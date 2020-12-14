@@ -72,7 +72,7 @@
                 @{
                     if (TempData.Peek("usuarioId") != null)
                     {
-                        <a class="btn btn-outline-danger" style="margin-right: 3px;" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>
+                        <a class="btn btn-outline-danger" style="margin-right: 3px;" data-toggle="tooltip" title="Cerrá tu sesión" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>
                     }
                 }
                 @{

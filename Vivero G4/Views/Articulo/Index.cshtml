@@ -92,13 +92,18 @@
     @{
         if (TempData.Peek("usuarioEsAdmin") != null && (TempData.Peek("usuarioEsAdmin").Equals(true) || TempData.Peek("usuarioEsAdmin").Equals(false)))
         {
-
+            <div class="row justify-content-center">
+                <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Volver</a>
+            </div>
         }
         else
-        { 
-         <div class="container-contacto">
-            <a class="link-contacto" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">¡Iniciá sesión para comprar tu artículo!</a>
-         </div>
+        {
+            <div class="container-contacto row justify-content-center">
+                <a class="link-contacto" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">¡Iniciá sesión para comprar tu artículo!</a>
+            </div>
+            <div class="container-contacto row justify-content-center">
+                <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Volver</a>
+            </div>
         }
     }
 

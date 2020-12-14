@@ -233,6 +233,7 @@ a:hover {
     font-weight:900;
 }
 
+
 #carouselPlantas {
     width: 40%;
     margin-top: 15px;
@@ -311,6 +312,12 @@ a:hover {
     font-size: 16px;
     color: green;
     font-family: 'Poppins', sans-serif;
+}
+
+.letra-sesion {
+    font-family: 'Poppins', sans-serif;
+    color: #436e43;
+    font-size: 16px;
 }
 
 

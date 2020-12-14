@@ -10,9 +10,9 @@
     @{
         if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
         {
-            <a asp-action="Create">Agregar nuevo producto</a>
+            <a class="btn btn-success" asp-action="Create">Agregar nuevo producto</a>
         }
-    }    
+    }
 </p>
 <div class="table-responsive">
     <table class="table table-hover table-dark">
@@ -42,46 +42,53 @@
             {
                 if (item.Cantidad >= 1)
                 {
-                <tr>
-                    <td>
-                        <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
-                    </td>
-                    <td>
+                    <tr>
+                        <td>
+                            <img class="producto" src="~/images/@Html.DisplayFor(modelItem => item.Imagen)" />
+                        </td>
+                        <td>
+                            @{
+                                if (TempData.Peek("usuarioId") != null)
+                                {
+                                    <a class="btn btn-success" asp-area="" asp-controller="Articulo" asp-action="Comprar" asp-route-id="@item.ArticuloId">Comprar</a>
+                                    <div>
+                                        @ViewBag.message
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad) U
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categoria)
+                        </td>
                         @{
-                            if (TempData.Peek("usuarioId") != null)
+                            if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
                             {
-                                <a class="btn btn-success" asp-area="" asp-controller="Articulo" asp-action="Comprar" asp-route-id="@item.ArticuloId">Comprar</a>
-                                <div>
-                                    @ViewBag.message
-                                </div>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.ArticuloId">Editar</a> |
+                                    <a asp-action="Details" asp-route-id="@item.ArticuloId">Detalle</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.ArticuloId">Eliminar</a>
+                                </td>
                             }
                         }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        $@Html.DisplayFor(modelItem => item.Precio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cantidad) U
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Categoria)
-                    </td>
-                    @{
-                        if (TempData.Peek("usuarioEsAdmin") != null && TempData.Peek("usuarioEsAdmin").Equals(true))
-                        {
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.ArticuloId">Editar</a> |
-                                <a asp-action="Details" asp-route-id="@item.ArticuloId">Detalle</a> |
-                                <a asp-action="Delete" asp-route-id="@item.ArticuloId">Eliminar</a>
-                            </td>
-                        }
-                    }
-                </tr>
+                    </tr>
                 }
             }
         </tbody>
     </table>
 </div>
+
+<div class="container boton-margen">
+        <a class="btn-lg btn-success" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">¡Iniciá sesión para comprar tu artículo!</a>
+</div>
+
+
+

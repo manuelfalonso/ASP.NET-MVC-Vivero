@@ -72,10 +72,10 @@
                 @{
                     if (TempData.Peek("usuarioId") != null)
                     {
-                        <a style="color:red" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>                      
+                        <a class="btn btn-outline-danger" style="margin-right: 3px;" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>                      
                     }
                 }
-                <a class="navbar-brand" data-toggle="tooltip" title="Iniciar sesión" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
+                <a class="btn btn-outline-success" data-toggle="tooltip" title="Iniciar sesión" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
                     @TempData.Peek("usuarioEmail")
                     <img class="imgBrand" src="~/images/usuario.png" alt="Iniciar Sesión" />
                 </a>

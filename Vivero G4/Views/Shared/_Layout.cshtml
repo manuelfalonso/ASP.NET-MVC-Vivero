@@ -72,13 +72,27 @@
                 @{
                     if (TempData.Peek("usuarioId") != null)
                     {
-                        <a class="btn btn-outline-danger" style="margin-right: 3px;" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>                      
+                        <a class="btn btn-outline-danger" style="margin-right: 3px;" asp-area="" asp-controller="Clientes" asp-action="CerrarSesion">Cerrar sesión</a>
                     }
                 }
-                <a class="btn btn-outline-success" data-toggle="tooltip" title="Iniciar sesión" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
-                    @TempData.Peek("usuarioEmail")
-                    <img class="imgBrand" src="~/images/usuario.png" alt="Iniciar Sesión" />
-                </a>
+                @{
+                    if (TempData.Peek("usuarioEsAdmin") != null && (TempData.Peek("usuarioEsAdmin").Equals(true) || TempData.Peek("usuarioEsAdmin").Equals(false)))
+                    {
+                        <a class="btn btn-outline-success" data-toggle="tooltip" title="Iniciar sesión / Editar" asp-area="" asp-controller="Clientes" asp-action="Edit" asp-route-id="@TempData.Peek("usuarioId")">
+                            @TempData.Peek("usuarioEmail")
+                            <img class="imgBrand" src="~/images/usuario.png" alt="Iniciar Sesión" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-success" data-toggle="tooltip" title="Iniciar sesión" asp-area="" asp-controller="Clientes" asp-action="IniciarSesion">
+                            @TempData.Peek("usuarioEmail")
+                            <img class="imgBrand" src="~/images/usuario.png" alt="Iniciar Sesión" />
+                        </a>
+                    }
+
+                }
+
             </div>
         </nav>
     </header>

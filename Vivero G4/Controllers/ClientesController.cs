@@ -130,7 +130,7 @@ namespace Vivero_G4.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Home");
             }
             return View(cliente);
         }
